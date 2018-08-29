@@ -9,41 +9,21 @@
 		var isItPlayerOnesTurn:Boolean = true;
 		
 		public function Game() {
+			var buttons:Array = new Array(b1, b2, b3, b4, b5, b6, b7, b8, b9);
 			
-			b1.buttonMode = true;
-			b2.buttonMode = true;
-			b3.buttonMode = true;
-			b4.buttonMode = true;
-			b5.buttonMode = true;
-			b6.buttonMode = true;
-			b7.buttonMode = true;
-			b8.buttonMode = true;
-			b9.buttonMode = true;
+			playerone.visible = false;
+			playertwo.visible = false;
+			tie.visible = false;
 			
-			b1.stop();
-			b2.stop();
-			b3.stop();
-			b4.stop();
-			b5.stop();
-			b6.stop();
-			b7.stop();
-			b8.stop();
-			b9.stop();
-			
-			b1.addEventListener(MouseEvent.CLICK, handleClick);
-			b2.addEventListener(MouseEvent.CLICK, handleClick);
-			b3.addEventListener(MouseEvent.CLICK, handleClick);
-			b4.addEventListener(MouseEvent.CLICK, handleClick);
-			b5.addEventListener(MouseEvent.CLICK, handleClick);
-			b6.addEventListener(MouseEvent.CLICK, handleClick);
-			b7.addEventListener(MouseEvent.CLICK, handleClick);
-			b8.addEventListener(MouseEvent.CLICK, handleClick);
-			b9.addEventListener(MouseEvent.CLICK, handleClick);
-			
+			for each(var btn in buttons){
+				btn.buttonMode = true;
+				btn.stop();
+				btn.addEventListener(MouseEvent.CLICK, handleClick);
+			}			
 		}
 		
 		function handleClick(e:MouseEvent):void {
-			
+			var buttons:Array = new Array(b1, b2, b3, b4, b5, b6, b7, b8, b9);
 			
 			if(e.target.currentFrame != 1) return;
 			
@@ -55,8 +35,77 @@
 			
 			isItPlayerOnesTurn = !isItPlayerOnesTurn;
 			
-			// toggle visibilty of UI elements
-			// TODO: look for a winner...
+			//Player One win condition.
+			if (b1.currentFrame == 2 && b2.currentFrame == 2 && b3.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b4.currentFrame == 2 && b5.currentFrame == 2 && b6.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b7.currentFrame == 2 && b8.currentFrame == 2 && b9.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b1.currentFrame == 2 && b4.currentFrame == 2 && b7.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b2.currentFrame == 2 && b5.currentFrame == 2 && b8.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b3.currentFrame == 2 && b6.currentFrame == 2 && b9.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b1.currentFrame == 2 && b5.currentFrame == 2 && b9.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			else if (b3.currentFrame == 2 && b5.currentFrame == 2 && b7.currentFrame == 2){
+				playerone.visible = true;
+			}
+			
+			//Player 2 win condition.
+			else if (b1.currentFrame == 3 && b2.currentFrame == 3 && b3.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b4.currentFrame == 3 && b5.currentFrame == 3 && b6.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b7.currentFrame == 3 && b8.currentFrame == 3 && b9.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b1.currentFrame == 3 && b4.currentFrame == 3 && b7.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b2.currentFrame == 3 && b5.currentFrame == 3 && b8.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b3.currentFrame == 3 && b6.currentFrame == 3 && b9.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b1.currentFrame == 3 && b5.currentFrame == 3 && b9.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			else if (b3.currentFrame == 3 && b5.currentFrame == 3 && b7.currentFrame == 3){
+				playertwo.visible = true;
+			}
+			
+			//Check for a tie.
+			else if (b1.currentFrame != 1 && b2.currentFrame != 1 && b3.currentFrame != 1 && b4.currentFrame != 1 && 
+				b5.currentFrame != 1 && b6.currentFrame != 1 && b7.currentFrame != 1 && b8.currentFrame != 1 && b9.currentFrame != 1){
+					tie.visible = true;
+				}
 			
 		}
 		
