@@ -23,8 +23,6 @@
 		}
 		
 		function handleClick(e:MouseEvent):void {
-			var buttons:Array = new Array(b1, b2, b3, b4, b5, b6, b7, b8, b9);
-			
 			if(e.target.currentFrame != 1) return;
 			
 			if(isItPlayerOnesTurn){
